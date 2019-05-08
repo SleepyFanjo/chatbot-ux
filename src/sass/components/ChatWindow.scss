@@ -31,6 +31,37 @@ $padding-top: 20px;
   height: calc(
     100vh - #{$bottom-bar-height} - #{$top-bar-height} - #{$input-height} - #{$padding-top}
   );
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
+}
+
+.Chat--messages {
+  width: 100%;
+}
+
+.Chat--message {
+  padding: 5px;
+  > span {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  &.user {
+    text-align: right;
+    > span {
+      background: $color-teal;
+      color: white;
+    }
+  }
+
+  &.bot {
+    > span {
+      background: #e2e2e2;
+    }
+  }
 }
 
 .Chat--top-bar {
