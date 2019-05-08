@@ -1,0 +1,73 @@
+.ChatBubble--wrapper {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  background: $color-teal;
+  width: 80px;
+  height: 80px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  @include mdc-elevation(6);
+
+  &:hover {
+    @include mdc-elevation(12);
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  &:after {
+    content: attr(aria-label);
+    position: absolute;
+    right: 90px;
+    bottom: 0;
+    opacity: 0;
+    color: white;
+    font-size: 1rem;
+    white-space: nowrap;
+    @include mdc-elevation(12);
+    padding: 5px;
+    border-radius: 5px;
+    background: #00b9af;
+    transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 280ms;
+  }
+}
+
+.ChatBubble--wrapper > i.material-icons {
+  font-size: 2rem;
+}
+
+// ChatBubble close transition
+.ChatBubble--transition-exit {
+  &.ChatBubble--wrapper {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    &:after {
+      content: unset;
+    }
+
+    & > i.material-icons {
+      display: none;
+    }
+  }
+}
+
+.ChatBubble--transition-exit-active {
+  &.ChatBubble--wrapper {
+    width: 300px;
+    transition: width cubic-bezier(0.4, 0, 0.2, 1) 280ms;
+  }
+}
