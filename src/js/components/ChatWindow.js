@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import ChatInput from './ChatInput'
 import ChatContent from './ChatContent'
+import ChatTopBar from './ChatTopBar'
 
 const ChatWindow = ({ close }) => {
   const [messages, setMessages] = useState([
@@ -20,7 +21,7 @@ const ChatWindow = ({ close }) => {
       <div className="Chat--bottom-bar" />
       <ChatInput onSubmit={pushUserMessage} />
       <ChatContent messages={messages} />
-      <div className="Chat--top-bar" onClick={close} />
+      <ChatTopBar close={close} />
     </div>
   )
 }

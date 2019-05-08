@@ -70,6 +70,21 @@ $padding-top: 20px;
   background: $color-teal;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-between;
+}
+
+.Chat--top-bar-close {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  outline: none;
+  padding: 0;
 }
 
 .Chat--bottom-bar {
