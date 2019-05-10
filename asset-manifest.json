@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/chatbot-ux/static/css/main.9cbda0f1.chunk.css",
+    "main.css": "/chatbot-ux/static/css/main.ea0e87af.chunk.css",
     "main.js": "/chatbot-ux/static/js/main.c27699bd.chunk.js",
     "main.js.map": "/chatbot-ux/static/js/main.c27699bd.chunk.js.map",
     "runtime~main.js": "/chatbot-ux/static/js/runtime~main.0d3f2592.js",
@@ -8,9 +8,9 @@
     "static/js/2.58e9da8e.chunk.js": "/chatbot-ux/static/js/2.58e9da8e.chunk.js",
     "static/js/2.58e9da8e.chunk.js.map": "/chatbot-ux/static/js/2.58e9da8e.chunk.js.map",
     "index.html": "/chatbot-ux/index.html",
-    "precache-manifest.9b77cfa2da3a97b194a7c2c54c25a147.js": "/chatbot-ux/precache-manifest.9b77cfa2da3a97b194a7c2c54c25a147.js",
+    "precache-manifest.d107baab0d842beb9969653a40122a4f.js": "/chatbot-ux/precache-manifest.d107baab0d842beb9969653a40122a4f.js",
     "service-worker.js": "/chatbot-ux/service-worker.js",
-    "static/css/main.9cbda0f1.chunk.css.map": "/chatbot-ux/static/css/main.9cbda0f1.chunk.css.map",
+    "static/css/main.ea0e87af.chunk.css.map": "/chatbot-ux/static/css/main.ea0e87af.chunk.css.map",
     "static/media/index.scss": "/chatbot-ux/static/media/MaterialIcons-Regular.e79bfd88.eot"
   }
 }
