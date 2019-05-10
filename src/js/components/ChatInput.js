@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 
 const ChatInput = ({ onSubmit }) => {
   const [message, setMessage] = useState('')
@@ -10,12 +10,18 @@ const ChatInput = ({ onSubmit }) => {
     messageToSend.current = message
   }, [message])
 
+  const sendMessage = useCallback(() => {
+    setMessage('')
+    if (messageToSend.current && messageToSend.current.trim()) {
+      onSubmit(messageToSend.current)
+    }
+  }, [onSubmit])
+
   useEffect(() => {
     console.log('expensive effect run')
     const handleKeyboard = e => {
       if (e.code === 'Enter' && e.shiftKey === false) {
-        setMessage('')
-        onSubmit(messageToSend.current)
+        sendMessage()
       }
     }
 
@@ -26,18 +32,27 @@ const ChatInput = ({ onSubmit }) => {
       console.log('expensive effect clean')
       textareaDom.removeEventListener('keyup', handleKeyboard)
     }
-  }, [onSubmit])
+  }, [sendMessage])
 
   const handleMessageChange = e => setMessage(e.target.value)
 
   return (
-    <textarea
-      ref={textarea}
-      className="Chat--input"
-      placeholder="Write a message..."
-      value={message}
-      onChange={handleMessageChange}
-    />
+    <>
+      <textarea
+        ref={textarea}
+        className="Chat--input"
+        placeholder="Write a message..."
+        value={message}
+        onChange={handleMessageChange}
+      />
+      <button
+        aria-label="Send"
+        className="Chat--send-button"
+        onClick={sendMessage}
+      >
+        <i className="material-icons">send</i>
+      </button>
+    </>
   )
 }
 

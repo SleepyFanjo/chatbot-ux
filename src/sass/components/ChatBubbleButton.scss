@@ -67,7 +67,10 @@
 
 .ChatBubble--transition-exit-active {
   &.ChatBubble--wrapper {
-    width: 300px;
+    width: 350px;
+    @media screen and (max-width: 370px) {
+      width: calc(100% - 20px);
+    }
     transition: width cubic-bezier(0.4, 0, 0.2, 1) 280ms;
   }
 }
