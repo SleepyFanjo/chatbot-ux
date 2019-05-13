@@ -13,6 +13,10 @@ $padding-top: 20px;
   @include mdc-elevation(6);
   border-radius: 5px;
 
+  &.fullscreen {
+    width: calc(100% - 20px);
+  }
+
   @media screen and (max-width: 370px) {
     width: calc(100% - 20px);
   }
@@ -34,16 +38,6 @@ $padding-top: 20px;
     sans-serif;
 }
 
-.Chat--send-button {
-  position: absolute;
-  right: 10px;
-  color: white;
-  border: none;
-  bottom: 4px;
-  background: transparent;
-  outline: none;
-}
-
 .Chat--content {
   height: calc(
     90vh - #{$bottom-bar-height} - #{$top-bar-height} - #{$input-height} - #{$padding-top}
@@ -57,13 +51,28 @@ $padding-top: 20px;
   width: 100%;
 }
 
+.Chat--message-portrait {
+  color: #00b9af;
+  margin: 2px;
+}
+
 .Chat--message {
-  padding: 5px;
+  padding: 1px 5px;
   > span {
     display: inline-block;
     padding: 10px;
     border-radius: 5px;
     text-align: left;
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  &:last-child {
+    margin-bottom: 5px;
+  }
+
+  &.new-row {
+    margin-top: 4px;
   }
 
   &.user {
@@ -110,6 +119,19 @@ $padding-top: 20px;
   background: $color-teal;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.Chat--bottom-button {
+  color: white;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0px;
+  cursor: pointer;
 }
 
 .Chat--transition-enter {
