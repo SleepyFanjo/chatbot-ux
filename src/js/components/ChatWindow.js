@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import ChatInput from './ChatInput'
 import ChatContent from './ChatContent'
 import ChatTopBar from './ChatTopBar'
@@ -6,22 +6,26 @@ import ChatBottomBar from './ChatBottomBar'
 
 import { useChatInput } from '../hooks/useChatInput'
 
+import BotHandler from '../chatbot'
+
+const botHandler = new BotHandler()
+
 const ChatWindow = ({ close }) => {
   const [fullScreen, setFullscreen] = useState(false)
-  const [messages, setMessages] = useState([
-    { type: 'bot', content: 'Hello, how can I help ?' }
-  ])
+  const [messages, setMessages] = useState([])
+
+  useEffect(() => {
+    botHandler.init(setMessages, [
+      {
+        type: 'bot',
+        content:
+          "Hi! I'm Amy, your personal job assistant today. I'm here to answer your questions about Pictet in your preferred language"
+      }
+    ])
+  }, [])
 
   const pushUserMessage = useCallback(message => {
-    let messagesToPush = [{ type: 'user', content: message }]
-    if (Math.random() > 0.5) {
-      messagesToPush.push({
-        type: 'bot',
-        content: 'Here will be some content from the API'
-      })
-    }
-
-    setMessages(existingMessages => [...existingMessages, ...messagesToPush])
+    botHandler.notify({ type: 'user', content: message })
   }, [])
 
   const toggleFullScreen = () => setFullscreen(fs => !fs)
@@ -43,7 +47,7 @@ const ChatWindow = ({ close }) => {
         handleMessageChange={handleMessageChange}
         sendMessage={sendMessage}
       />
-      <ChatContent messages={messages} />
+      <ChatContent messages={messages} pushUserMessage={pushUserMessage} />
       <ChatTopBar close={close} />
     </div>
   )

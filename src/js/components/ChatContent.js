@@ -1,8 +1,13 @@
 import React from 'react'
 
-const ChatContent = ({ messages }) => {
+const ChatContent = ({ messages, pushUserMessage }) => {
   let previousType = null
   let newRow = true
+
+  const sendUserMessage = message => {
+    pushUserMessage(message.value)
+  }
+
   return (
     <div className="Chat--content">
       <div className="Chat--messages">
@@ -28,6 +33,19 @@ const ChatContent = ({ messages }) => {
                     {line}
                   </span>
                 ))}
+                {message.options &&
+                  message.options.map((option, key) => {
+                    return (
+                      <button
+                        key={key}
+                        onClick={() => {
+                          sendUserMessage(option)
+                        }}
+                      >
+                        {option.text}
+                      </button>
+                    )
+                  })}
               </span>
             </div>
           )

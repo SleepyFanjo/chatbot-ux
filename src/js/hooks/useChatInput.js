@@ -13,12 +13,15 @@ export const useChatInput = onSubmit => {
   const sendMessage = useCallback(() => {
     setMessage('')
     if (messageToSend.current && messageToSend.current.trim()) {
-      onSubmit(messageToSend.current)
+      if (messageToSend.current[messageToSend.current.length - 1] === '\n') {
+        onSubmit(messageToSend.current.slice(0, -1))
+      } else {
+        onSubmit(messageToSend.current)
+      }
     }
   }, [onSubmit])
 
   useEffect(() => {
-    console.log('expensive effect run')
     const handleKeyboard = e => {
       if (e.code === 'Enter' && e.shiftKey === false) {
         sendMessage()
@@ -29,7 +32,6 @@ export const useChatInput = onSubmit => {
     textareaDom.addEventListener('keyup', handleKeyboard)
 
     return () => {
-      console.log('expensive effect clean')
       textareaDom.removeEventListener('keyup', handleKeyboard)
     }
   }, [sendMessage])

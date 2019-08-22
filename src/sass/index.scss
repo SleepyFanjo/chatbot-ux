@@ -43,6 +43,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -51,11 +56,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #aaa;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.Centered__logo > span {
+  color: white;
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  font-size: 20px;
+  border-top: 1px solid white;
+}
+.Centered__logo > img {
+  width: 100px;
+}
+.Centered__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
 @import 'components/ChatBubbleButton';
