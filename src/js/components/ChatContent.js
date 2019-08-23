@@ -1,5 +1,28 @@
 import React from 'react'
 
+const ChatbotButton = ({ option, sendUserMessage }) => {
+  if (option.type === 'link') {
+    return (
+      <>
+        <br />
+        <a href={option.value} target="_blank">
+          {option.text}
+        </a>
+      </>
+    )
+  }
+
+  return (
+    <button
+      onClick={() => {
+        sendUserMessage(option)
+      }}
+    >
+      {option.text}
+    </button>
+  )
+}
+
 const ChatContent = ({ messages, pushUserMessage }) => {
   let previousType = null
   let newRow = true
@@ -36,14 +59,11 @@ const ChatContent = ({ messages, pushUserMessage }) => {
                 {message.options &&
                   message.options.map((option, key) => {
                     return (
-                      <button
+                      <ChatbotButton
+                        option={option}
+                        sendUserMessage={sendUserMessage}
                         key={key}
-                        onClick={() => {
-                          sendUserMessage(option)
-                        }}
-                      >
-                        {option.text}
-                      </button>
+                      />
                     )
                   })}
               </span>

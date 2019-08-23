@@ -2,51 +2,54 @@ class Chatbot {
   messages = []
   scenario = [
     {
-      user: 'Hi',
+      user: 'hi',
       bot: {
         type: 'bot',
-        content: 'How may I assist you?',
+        content: 'Tell me, how may I assist you?'
+      }
+    },
+    {
+      user: 'hello',
+      bot: {
+        type: 'bot',
+        content: 'Tell me, how may I assist you?'
+      }
+    },
+    {
+      user: 'looking for a job',
+      bot: {
+        type: 'bot',
+        content: 'Sure. How would you like to proceed?'
+      }
+    },
+    {
+      user: 'informations',
+      bot: {
+        type: 'bot',
+        content: 'You can have a look at our website, here is the link',
         options: [
-          { text: 'Job search', value: 'I am looking for a job' },
-          { text: 'About us', value: "I'd like to know more about you" }
+          { type: 'link', value: 'https://group.pictet', text: 'Click here' }
         ]
       }
     },
     {
-      user: 'Yes',
-      bot: {
-        type: 'bot',
-        content: 'How may I assist you?',
-        options: [
-          { text: 'Job search', value: 'I am looking for a job' },
-          { text: 'About us', value: "I'd like to know more about you" }
-        ]
-      }
-    },
-    {
-      user: 'I am looking for a job',
-      bot: {
-        type: 'bot',
-        content: 'Sure, I can help here. How would you like to proceed?'
-      }
-    },
-    {
-      user: "I'd like to know more about you",
-      bot: {
-        type: 'bot',
-        content: 'We are working on a good presentation for you, come back soon'
-      }
-    },
-    {
-      user: 'What is the recruitment process?',
+      user: 'recruitment process',
       bot: {
         type: 'bot',
         content:
-          'To be considered for a position at Pictet, it is required that you complete the online application, here is the link ...'
+          'To be considered for a position at Pictet, it is required that you complete the online application, here is the link',
+        options: [
+          {
+            type: 'link',
+            value:
+              'https://career012.successfactors.eu/career?company=banquepict&career%5fns=job%5flisting%5fsummary&navBarLevel=JOB%5fSEARCH&_s.crb=iY2NwvqDtik5Dq9w3%2fwL2LrcwW4%3d',
+            text: 'Click here'
+          }
+        ]
       }
     },
     {
-      user: 'Great thanks. By the way do you know how long it takes usually?',
+      user: 'how long',
       bot: {
         type: 'bot',
         content:
@@ -54,15 +57,14 @@ class Chatbot {
       }
     },
     {
-      user: 'Ok thanks Amy!',
+      user: 'thanks',
       bot: {
         type: 'bot',
-        content: 'Do you have any other question',
-        options: [{ text: 'Yes', value: 'Yes' }, { text: 'No', value: 'No' }]
+        content: 'Do you have any other question'
       }
     },
     {
-      user: 'No',
+      user: 'no',
       bot: {
         type: 'bot',
         content: 'May I ask you how was your experience with me?',
@@ -74,24 +76,52 @@ class Chatbot {
       }
     },
     {
-      user: 'Medium',
+      user: 'nope',
+      bot: {
+        type: 'bot',
+        content: 'May I ask you how was your experience with me?'
+      }
+    },
+    {
+      user: 'yes',
+      bot: {
+        type: 'bot',
+        content: 'Tell me, how may I assist you?'
+      }
+    },
+    {
+      user: 'amazing',
       bot: {
         type: 'bot',
         content: 'Thank you for letting me know! Have a nice day!'
       }
     },
     {
-      user: 'Decent',
+      user: 'awesome',
       bot: {
         type: 'bot',
         content: 'Thank you for letting me know! Have a nice day!'
       }
     },
     {
-      user: 'Bliss',
+      user: 'all fine',
       bot: {
         type: 'bot',
-        content: "I'm glad it helped! Have a nice day!"
+        content: 'Thank you for letting me know! Have a nice day!'
+      }
+    },
+    {
+      user: 'super',
+      bot: {
+        type: 'bot',
+        content: 'Thank you for letting me know! Have a nice day!'
+      }
+    },
+    {
+      user: ':)',
+      bot: {
+        type: 'bot',
+        content: ''
       }
     }
   ]
@@ -115,8 +145,9 @@ class Chatbot {
   }
 
   handleScenario = userMessage => {
+    let lowerContent = userMessage.content.toLowerCase()
     let scenarioFound = this.scenario.find(scenario => {
-      return scenario.user === userMessage.content
+      return lowerContent.includes(scenario.user)
     })
 
     if (scenarioFound) {
@@ -130,8 +161,7 @@ class Chatbot {
     if (!this.handleScenario(userMessage)) {
       this.pushMessage({
         type: 'bot',
-        content:
-          "Sorry I can't handle this request yet, can I help on something else ?"
+        content: "Sorry I didn't get it, can you rephrase?"
       })
     }
     this.synchronizeChat()
