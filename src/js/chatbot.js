@@ -1,5 +1,16 @@
+import offers from '../asset/offers.json'
+
 class Chatbot {
   messages = []
+  offersKeys = [
+    'intern',
+    'project',
+    'risk',
+    'finance',
+    'digital',
+    'cyber',
+    'data'
+  ]
   scenario = [
     {
       user: 'hi',
@@ -19,7 +30,7 @@ class Chatbot {
       user: 'looking for a job',
       bot: {
         type: 'bot',
-        content: 'Sure. How would you like to proceed?'
+        content: 'Are you interested in a specific role or location?'
       }
     },
     {
@@ -157,8 +168,35 @@ class Chatbot {
     return scenarioFound
   }
 
+  handleOffers = userMessage => {
+    let lowerContent = userMessage.content.toLowerCase()
+    let offerKeyFound = this.offersKeys.find(offerKey => {
+      return lowerContent.includes(offerKey)
+    })
+
+    if (offerKeyFound) {
+      this.pushMessage({
+        type: 'bot',
+        content: 'Let me check...'
+      })
+
+      setTimeout(() => {
+        this.pushMessage({
+          type: 'bot',
+          content:
+            'You are lucky, we have found ' +
+            offers[offerKeyFound].length +
+            ' offers for you!',
+          offers: offers[offerKeyFound]
+        })
+      }, 1000)
+    }
+
+    return offerKeyFound
+  }
+
   handleUserMessage = userMessage => {
-    if (!this.handleScenario(userMessage)) {
+    if (!this.handleScenario(userMessage) && !this.handleOffers(userMessage)) {
       this.pushMessage({
         type: 'bot',
         content: "Sorry I didn't get it, can you rephrase?"

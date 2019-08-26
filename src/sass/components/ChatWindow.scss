@@ -55,6 +55,10 @@ $padding-top: 20px;
 .Chat--message-portrait {
   color: #00b9af;
   margin: 2px;
+
+  & > img {
+    width: 40px;
+  }
 }
 
 .Chat--message {
@@ -71,6 +75,27 @@ $padding-top: 20px;
   button {
     display: block;
     margin: 10px 0;
+  }
+
+  .Chat--jobTitle {
+    &:first-child {
+      margin-top: 10px;
+    }
+    border: none;
+    background: none;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    text-align: left;
+
+    & > i.material-icons {
+      color: #00b9af;
+      font-size: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+      padding-bottom: 3px;
+    }
   }
 
   &:last-child {
@@ -181,5 +206,36 @@ $padding-top: 20px;
       90vh - #{$bottom-bar-height} - #{$top-bar-height} - #{$input-height} - #{$padding-top}
     );
     transition: height cubic-bezier(0.4, 0, 0.2, 1) 280ms;
+  }
+}
+
+.Chat__popup {
+  position: fixed;
+  top: 20px;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  background: white;
+  z-index: 20;
+
+  &--title {
+    background: $color-teal;
+    color: white;
+    padding: 20px 40px;
+  }
+
+  &--content {
+    overflow-y: auto;
+    max-height: calc(100% - 58px);
+    padding: 0 40px;
+  }
+
+  &--wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: #0000007a;
   }
 }

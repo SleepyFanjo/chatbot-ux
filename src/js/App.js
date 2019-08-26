@@ -8,7 +8,10 @@ import ChatWindow from './components/ChatWindow'
 const CenteredLogo = () => {
   return (
     <div className="Centered__logo">
-      <img src="http://image.pictetassetmanagement-email.com/lib/fe381570756405797c1173/m/1/d1dde271-12cb-4c3d-82ab-aeb75e4776a7.png" />
+      <img
+        alt="pictet-logo"
+        src="http://image.pictetassetmanagement-email.com/lib/fe381570756405797c1173/m/1/d1dde271-12cb-4c3d-82ab-aeb75e4776a7.png"
+      />
       <span>Pictet Careers</span>
     </div>
   )

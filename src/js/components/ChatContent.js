@@ -1,4 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
+import botFace from '../../asset/bot-face.png'
+
+const JobOffers = ({ offers }) => {
+  const [selectedOffer, setOffer] = useState(null)
+  return (
+    <>
+      {selectedOffer ? (
+        <div className="Chat__popup--wrapper" onClick={() => setOffer(null)}>
+          <div className="Chat__popup">
+            <div className="Chat__popup--title">
+              {selectedOffer.jobTitle} - {selectedOffer.location}
+            </div>
+            <div className="Chat__popup--content">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: selectedOffer.jobDescription
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
+      <div className="Chat--jobList">
+        {offers.map((offer, key) => (
+          <button
+            class="Chat--jobTitle"
+            key={key}
+            onClick={() => setOffer(offer)}
+          >
+            <i class="material-icons">visibility</i>
+            {offer.jobTitle} - {offer.location}
+          </button>
+        ))}
+      </div>
+    </>
+  )
+}
 
 const ChatbotButton = ({ option, sendUserMessage }) => {
   if (option.type === 'link') {
@@ -45,9 +82,9 @@ const ChatContent = ({ messages, pushUserMessage }) => {
               key={key}
             >
               {newRow && message.type === 'bot' ? (
-                <span className="Chat--message-portrait">
-                  <i className="material-icons">android</i>
-                </span>
+                <div className="Chat--message-portrait">
+                  <img src={botFace} alt="bot avatar" />
+                </div>
               ) : null}
               <span>
                 {message.content.split('\n').map((line, lineKey) => (
@@ -66,6 +103,7 @@ const ChatContent = ({ messages, pushUserMessage }) => {
                       />
                     )
                   })}
+                {message.offers ? <JobOffers offers={message.offers} /> : null}
               </span>
             </div>
           )
