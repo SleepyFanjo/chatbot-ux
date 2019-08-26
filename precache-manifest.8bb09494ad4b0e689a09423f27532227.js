@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a2d4271f30e8d51f5dad95dad387ba27",
+    "revision": "00add22e2fe58f5afd844044c809119d",
     "url": "/chatbot-ux/index.html"
   },
   {
-    "revision": "5572030ead108ed12768",
-    "url": "/chatbot-ux/static/css/main.22712670.chunk.css"
+    "revision": "b178df7b3b47ecef7ae0",
+    "url": "/chatbot-ux/static/css/main.c1c50a1d.chunk.css"
   },
   {
-    "revision": "85c1333bda6565f6c94f",
-    "url": "/chatbot-ux/static/js/2.9ffc5c2d.chunk.js"
+    "revision": "c8b764e5092541663af6",
+    "url": "/chatbot-ux/static/js/2.c183c913.chunk.js"
   },
   {
-    "revision": "5572030ead108ed12768",
-    "url": "/chatbot-ux/static/js/main.77d2311f.chunk.js"
+    "revision": "b178df7b3b47ecef7ae0",
+    "url": "/chatbot-ux/static/js/main.f7b94b7e.chunk.js"
   },
   {
     "revision": "80e24c21c97d98d86582",
@@ -34,5 +34,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e79bfd88537def476913f3ed52f4f4b3",
     "url": "/chatbot-ux/static/media/MaterialIcons-Regular.e79bfd88.eot"
+  },
+  {
+    "revision": "eab9e7f6ed65f62fb3f25a01b4b0a5bd",
+    "url": "/chatbot-ux/static/media/bot-face.eab9e7f6.png"
   }
 ]);
